@@ -51,5 +51,58 @@ table.onclick = function (e) {
 
     currentPlayer = (currentPlayer%2)+1;
     document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!";
-    //rotate();
+    rotate();
 };
+
+
+
+function rotate() {
+	var rand = Math.floor(Math.random() * 3) + 1;
+	if(rand>1) {
+
+		var tempGrid = new Array(8);
+
+		for (var i = 0; i < 8; i++) {
+			tempGrid[i] = new Array(8);
+		}
+
+		if(rand===2) { //clockwise
+			for(var x=0; x<8; x++) {
+				for(var y=0; y<8; y++) {
+					tempGrid[x][y] = grid[7-y][x];
+				}
+			}
+			//gravity();
+			document.getElementById('rotation').innerHTML = "Just rotated clockwise";
+		} 
+		else { //counter-clockwise
+			for(var x=0; x<8; x++) {
+				for(var y=0; y<8; y++) {
+					tempGrid[x][y] = grid[y][7-x];
+				}
+			}
+			//gravity();
+			document.getElementById('rotation').innerHTML = "Just rotated counter-clockwise";
+		}
+
+		grid = tempGrid;
+		redrawTable();
+
+	}
+	else {
+		document.getElementById('rotation').innerHTML = "Did not rotate";
+	}
+}
+
+/*
+
+function gravity() {
+	for(var x=0; x<8; x++) {
+		for(var y=0; y<8; y++) {
+
+		}
+	}
+}
+
+*/
+
