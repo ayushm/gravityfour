@@ -43,15 +43,22 @@ table.onclick = function (e) {
     var x = parseInt(targetID.substring(0,1));
     var y = parseInt(targetID.substring(1));
 
-    if(grid[x][y]===0) {
-    	grid[x][y] = currentPlayer;
+    if(x<7 && grid[x+1][y]<1) { //make sure is placed at bottom of column
+    	alert("You can not place it there!");
+    }
+    else {
+    	if(grid[x][y]===0) {
+	    	grid[x][y] = currentPlayer;
+	    }
+
+	    redrawTable();
+
+	    currentPlayer = (currentPlayer%2)+1;
+	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!";
+	    rotate();
     }
 
-    redrawTable();
-
-    currentPlayer = (currentPlayer%2)+1;
-    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!";
-    rotate();
+    
 };
 
 
@@ -72,7 +79,6 @@ function rotate() {
 					tempGrid[x][y] = grid[7-y][x];
 				}
 			}
-			//gravity();
 			document.getElementById('rotation').innerHTML = "Just rotated clockwise";
 		} 
 		else { //counter-clockwise
@@ -81,11 +87,11 @@ function rotate() {
 					tempGrid[x][y] = grid[y][7-x];
 				}
 			}
-			//gravity();
 			document.getElementById('rotation').innerHTML = "Just rotated counter-clockwise";
 		}
 
 		grid = tempGrid;
+		gravity();
 		redrawTable();
 
 	}
@@ -94,15 +100,26 @@ function rotate() {
 	}
 }
 
-/*
+
 
 function gravity() {
-	for(var x=0; x<8; x++) {
-		for(var y=0; y<8; y++) {
 
+	var numEmpty = 0;
+
+	for(var y=0; y<8; y++) {
+		for(var x=7; x>=0; x--) {
+
+			if(grid[x][y]===0)
+				numEmpty++;
+			else {
+				grid[x+numEmpty][y] = grid[x][y];
+				if(numEmpty)
+					grid[x][y]=0;
+			}
 		}
+		numEmpty = 0;
 	}
 }
 
-*/
+
 
