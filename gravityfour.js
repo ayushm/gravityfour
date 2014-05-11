@@ -55,7 +55,7 @@ table.onclick = function (e) {
 
 	    currentPlayer = (currentPlayer%2)+1;
 	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!";
-	    rotate();
+	    rotateAnimation();
     }
 
     
@@ -63,8 +63,8 @@ table.onclick = function (e) {
 
 
 
-function rotate() {
-	var rand = Math.floor(Math.random() * 3) + 1;
+function rotate(rand) {
+	//var rand = Math.floor(Math.random() * 3) + 1;
 	if(rand>1) {
 
 		var tempGrid = new Array(8);
@@ -74,6 +74,7 @@ function rotate() {
 		}
 
 		if(rand===2) { //clockwise
+			document.getElementById('grid').classList.remove('spin-clock');
 			for(var x=0; x<8; x++) {
 				for(var y=0; y<8; y++) {
 					tempGrid[x][y] = grid[7-y][x];
@@ -82,6 +83,7 @@ function rotate() {
 			document.getElementById('rotation').innerHTML = "Just rotated clockwise";
 		} 
 		else { //counter-clockwise
+			document.getElementById('grid').classList.remove('spin-counter');
 			for(var x=0; x<8; x++) {
 				for(var y=0; y<8; y++) {
 					tempGrid[x][y] = grid[y][7-x];
@@ -98,6 +100,26 @@ function rotate() {
 	else {
 		document.getElementById('rotation').innerHTML = "Did not rotate";
 	}
+
+}
+
+function rotateAnimation() {
+	var rand = Math.floor(Math.random() * 3) + 1;
+	if(rand>1) {
+		if(rand===2) {
+			document.getElementById('grid').classList.add('spin-clock');
+		}
+		else {
+			document.getElementById('grid').classList.add('spin-counter');
+		}
+
+		setTimeout(function(){rotate(rand);}, 1500);
+	}
+	else {
+		rotate(rand);
+	}
+
+	
 }
 
 

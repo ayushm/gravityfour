@@ -28,6 +28,10 @@ body {
 	left: 0;
 }
 
+#grid-table {
+
+}
+
 #grid-table  {
 	margin: 5% auto;
 }
@@ -44,3 +48,27 @@ body {
 img {
 	max-width: 35px;
 }
+
+
+
+.spin-clock {
+	-webkit-animation: spinclock 1.5s linear;
+}
+
+@-webkit-keyframes spinclock {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(90deg);}   
+}
+
+.spin-counter {
+	-webkit-animation: spincounter 1.5s linear;
+}
+
+@-webkit-keyframes spincounter {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(-90deg);}   
+}
+
+
+
+
