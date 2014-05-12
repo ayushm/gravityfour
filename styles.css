@@ -6,7 +6,7 @@ body {
 	left: 0;
 	top: 0;
 	width: 100%;
-	background-color: #000;
+	background-color: #96692A;
 	color: #fff;
 	height: 10%;
 	text-align: center;
@@ -19,7 +19,7 @@ body {
 	top: 10%;
 	width: 100%;
 	height: 80%;
-	background-color: #949494;
+	background-color: #EBD4A0;
 }
 
 #control-container {
@@ -52,7 +52,7 @@ img {
 
 
 .spin-clock {
-	-webkit-animation: spinclock 1.5s linear;
+	-webkit-animation: spinclock 1.5s ease;
 }
 
 @-webkit-keyframes spinclock {
@@ -61,7 +61,7 @@ img {
 }
 
 .spin-counter {
-	-webkit-animation: spincounter 1.5s linear;
+	-webkit-animation: spincounter 1.5s ease;
 }
 
 @-webkit-keyframes spincounter {

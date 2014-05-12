@@ -93,7 +93,7 @@ function rotate(rand) {
 		}
 
 		grid = tempGrid;
-		gravity();
+		gravityAnimated();
 		redrawTable();
 
 	}
@@ -141,7 +141,51 @@ function gravity() {
 		}
 		numEmpty = 0;
 	}
+
 }
 
+
+function gravityAnimated() {
+
+	//var numEmpty = 0;
+
+	var gravityAnimationTimer = setInterval(function() {droppingAnimation();}, 125);
+	setTimeout(function() {clearTimeout(gravityAnimationTimer);}, 1000);
+	
+}
+
+function droppingAnimation() {
+
+	var numEmpty = 0;
+
+	for(var y=0; y<8; y++) {
+		for(var x=7; x>=0; x--) {
+			if(grid[x][y]===0) {
+				numEmpty++;
+			}
+			else if(numEmpty>0) {
+				grid[x+1][y] = grid[x][y];
+				grid[x][y] = 0;
+			}
+		}
+		numEmpty = 0;
+	}
+	redrawTable();
+}
+
+function isFullyGrounded() {
+	var numEmpty = 0;
+	for(var y=0; y<8; y++) {
+		for(var x=7; x>=0; x--) {
+			if(grid[x][y]===0) {
+				numEmpty++;
+			}
+			else if(numEmpty>0) {
+				return false;
+			}
+		}	
+	}
+	return true;
+}
 
 
