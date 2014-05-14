@@ -53,9 +53,15 @@ table.onclick = function (e) {
 
 	    redrawTable();
 
-	    currentPlayer = (currentPlayer%2)+1;
-	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!";
 	    rotateAnimation();
+
+	    currentPlayer = (currentPlayer%2)+1;
+
+	    var marker = (currentPlayer<2) ? "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_red.png'/>" : "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_blue.png'/>";
+
+	    
+	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!<br>"+marker;
+	    
     }
 
     
@@ -80,7 +86,7 @@ function rotate(rand) {
 					tempGrid[x][y] = grid[7-y][x];
 				}
 			}
-			document.getElementById('rotation').innerHTML = "Just rotated clockwise";
+			
 		} 
 		else { //counter-clockwise
 			document.getElementById('grid').classList.remove('spin-counter');
@@ -89,16 +95,13 @@ function rotate(rand) {
 					tempGrid[x][y] = grid[y][7-x];
 				}
 			}
-			document.getElementById('rotation').innerHTML = "Just rotated counter-clockwise";
+			
 		}
 
 		grid = tempGrid;
 		gravityAnimated();
 		redrawTable();
 
-	}
-	else {
-		document.getElementById('rotation').innerHTML = "Did not rotate";
 	}
 
 }
@@ -108,15 +111,18 @@ function rotateAnimation() {
 	if(rand>1) {
 		if(rand===2) {
 			document.getElementById('grid').classList.add('spin-clock');
+			document.getElementById('rotation').innerHTML = "Just rotated<br><img src='resources/rotate_clock.png' />";
 		}
 		else {
 			document.getElementById('grid').classList.add('spin-counter');
+			document.getElementById('rotation').innerHTML = "Just rotated<br><img src='resources/rotate_counter.png'/>";
 		}
 
 		setTimeout(function(){rotate(rand);}, 1500);
 	}
 	else {
 		rotate(rand);
+		document.getElementById('rotation').innerHTML = "Did not rotate<br><img src='resources/rotate_none.png' />";
 	}
 
 	
@@ -187,5 +193,4 @@ function isFullyGrounded() {
 	}
 	return true;
 }
-
 
