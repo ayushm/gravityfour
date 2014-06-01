@@ -43,8 +43,26 @@ table.onclick = function (e) {
     var x = parseInt(targetID.substring(0,1));
     var y = parseInt(targetID.substring(1));
 
-    if(x<7 && grid[x+1][y]<1) { //make sure is placed at bottom of column
-    	alert("You can not place it there!");
+    //if(x<7 && grid[x+1][y]<1) { //make sure is placed at bottom of column
+    	//alert("You can not place it there!");
+
+    	if(grid[0][y]===0) {
+	    	grid[0][y] = currentPlayer;
+	    }
+
+	    redrawTable();
+	    gravityAnimated();
+	    redrawTable();
+	    setTimeout(function() {rotateAnimation();}, 1000);
+
+	    currentPlayer = (currentPlayer%2)+1;
+
+	    var marker = (currentPlayer<2) ? "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_red.png'/>" : "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_blue.png'/>";
+
+	    
+	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!<br>"+marker;
+/*
+
     }
     else {
     	if(grid[x][y]===0) {
@@ -63,7 +81,7 @@ table.onclick = function (e) {
 	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!<br>"+marker;
 	    
     }
-
+*/
     
 };
 
