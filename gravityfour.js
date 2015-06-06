@@ -48,19 +48,24 @@ table.onclick = function (e) {
 
     	if(grid[0][y]===0) {
 	    	grid[0][y] = currentPlayer;
+
+		    redrawTable();
+		    gravityAnimated();
+		    redrawTable();
+		    setTimeout(function() {rotateAnimation();}, 1000);
+
+		    currentPlayer = (currentPlayer%2)+1;
+
+		    var marker = (currentPlayer<2) ? "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_red.png'/>" : "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_blue.png'/>";
+
+		    
+		    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!<br>"+marker;
+	    }
+	    else {
+	    	alert("Sorry, the column is full");
 	    }
 
-	    redrawTable();
-	    gravityAnimated();
-	    redrawTable();
-	    setTimeout(function() {rotateAnimation();}, 1000);
-
-	    currentPlayer = (currentPlayer%2)+1;
-
-	    var marker = (currentPlayer<2) ? "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_red.png'/>" : "<img src='https://cdn1.iconfinder.com/data/icons/function_icon_set/circle_blue.png'/>";
-
 	    
-	    document.getElementById('player').innerHTML = "Player "+currentPlayer+"'s turn!<br>"+marker;
 /*
 
     }
