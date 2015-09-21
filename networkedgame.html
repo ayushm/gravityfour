@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>GravityFour</title>
+	<link rel="stylesheet" type="text/css" href="css/styles2.css">
+	<link rel="stylesheet" type="text/css" href="css/networkedgame.css">
+	<link href="stars/stars.css" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+	<div id="star1container" class="starContainer fast"><div id='stars'></div></div>
+	<div id="star2container" class="starContainer medium"><div id='stars2'></div></div>
+	<div id="star3container" class="starContainer slow"><div id='stars3'></div></div>
+
+	<div id="header">
+		<h1>GRAVITY FOUR</h1>
+	</div>
+
+	<div id="create-game">
+		<div id="create-game-container">
+			<div id="creating-container">
+				<input id="playerName" type="text" name="player1name" placeholder="Enter Your Name"/>
+				<button onclick="createGameLink()" id="create-link-button">Create Link</button>
+			</div>	
+
+			<div id="waiting-container">
+				<h1>Waiting for other player...</h1><br><br>
+				<h4>Send this link</h4>
+				<h3 id="link">Creating link...</h3>
+			</div>
+		</div>
+	</div>
+
+	<div id="load-existing-game">
+		<div id="load-message-div">
+			<h1 id="load-message">Loading your game</h1><br>
+			<img id="loading-image" class="rotating" src="resources/rotate_clock.png"/>
+		</div>
+	</div>
+	
+	<div id="grid-container" style="display: none;">
+		<div id="player-div">
+			<span style="font-size: 40px;" id="player"><img src='resources/red_marker.png'/></span>
+		</div>
+
+		<div id="rotation-div">
+			<span style="font-size: 40px;" id="rotation">Click to start</span>
+		</div>
+
+		<div id="grid">
+			<table id="grid-table">
+				<tr><td id="00"></td><td id="01"></td><td id="02"></td><td id="03"></td><td id="04"></td><td id="05"></td><td id="06"></td><td id="07"></td></tr>
+				<tr><td id="10"></td><td id="11"></td><td id="12"></td><td id="13"></td><td id="14"></td><td id="15"></td><td id="16"></td><td id="17"></td></tr>
+				<tr><td id="20"></td><td id="21"></td><td id="22"></td><td id="23"></td><td id="24"></td><td id="25"></td><td id="26"></td><td id="27"></td></tr>
+				<tr><td id="30"></td><td id="31"></td><td id="32"></td><td id="33"></td><td id="34"></td><td id="35"></td><td id="36"></td><td id="37"></td></tr>
+				<tr><td id="40"></td><td id="41"></td><td id="42"></td><td id="43"></td><td id="44"></td><td id="45"></td><td id="46"></td><td id="47"></td></tr>
+				<tr><td id="50"></td><td id="51"></td><td id="52"></td><td id="53"></td><td id="54"></td><td id="55"></td><td id="56"></td><td id="57"></td></tr>
+				<tr><td id="60"></td><td id="61"></td><td id="62"></td><td id="63"></td><td id="64"></td><td id="65"></td><td id="66"></td><td id="67"></td></tr>
+				<tr><td id="70"></td><td id="71"></td><td id="72"></td><td id="73"></td><td id="74"></td><td id="75"></td><td id="76"></td><td id="77"></td></tr>
+			</table>
+		</div>
+		<div id="winner">
+			<span id="winnerName">Player 1 wins!</span><br>
+			<button id="home-button" onclick="window.location='index.html'">Play Again</button>
+		</div>
+		<div id="processing-cover"></div>
+	</div>
+	
+	
+</body>
+
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/network.js"></script>
+<script type="text/javascript" src="js/isNetworked.js"></script>
+<script type="text/javascript" src="stars/stars.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/fireworks.js"></script>
+</html>
